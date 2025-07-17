@@ -1,0 +1,80 @@
+{
+	"compiler": {
+		"version": "0.8.30+commit.73712a01"
+	},
+	"language": "Solidity",
+	"output": {
+		"abi": [
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "_logic",
+						"type": "address"
+					},
+					{
+						"internalType": "bytes",
+						"name": "_data",
+						"type": "bytes"
+					}
+				],
+				"stateMutability": "payable",
+				"type": "constructor"
+			},
+			{
+				"stateMutability": "payable",
+				"type": "fallback"
+			},
+			{
+				"stateMutability": "payable",
+				"type": "receive"
+			}
+		],
+		"devdoc": {
+			"details": "Proxy contract that delegates calls to an implementation contract (IFBCoin)      and stores the implementation address in a fixed EIP-1967 storage slot.",
+			"kind": "dev",
+			"methods": {
+				"constructor": {
+					"details": "Deploys the proxy and initializes the implementation.",
+					"params": {
+						"_data": "Initialization data encoded as bytes (call to initialize)",
+						"_logic": "Address of the implementation contract (IFBCoin)"
+					}
+				}
+			},
+			"title": "IFBCoinProxy (ERC1967 Proxy)",
+			"version": 1
+		},
+		"userdoc": {
+			"kind": "user",
+			"methods": {},
+			"version": 1
+		}
+	},
+	"settings": {
+		"compilationTarget": {
+			"IFBCoinProxy.sol": "IFBCoinProxy"
+		},
+		"evmVersion": "prague",
+		"libraries": {},
+		"metadata": {
+			"bytecodeHash": "ipfs"
+		},
+		"optimizer": {
+			"enabled": false,
+			"runs": 200
+		},
+		"remappings": []
+	},
+	"sources": {
+		"IFBCoinProxy.sol": {
+			"keccak256": "0xe4588d465a5bbde02117ae3c483ce4d1eef9608054280135674bb6184be03f45",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://703efa70f29c845ca320b9691393daa95486d9952446874741a5deddbdc27838",
+				"dweb:/ipfs/QmRAiy8aLgZP6ZFh2qQaDXr3CPYmEBrpdnLbpnXH2c2NJr"
+			]
+		}
+	},
+	"version": 1
+}

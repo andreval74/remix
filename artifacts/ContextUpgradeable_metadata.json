@@ -1,0 +1,45 @@
+{
+	"compiler": {
+		"version": "0.8.30+commit.73712a01"
+	},
+	"language": "Solidity",
+	"output": {
+		"abi": [],
+		"devdoc": {
+			"kind": "dev",
+			"methods": {},
+			"version": 1
+		},
+		"userdoc": {
+			"kind": "user",
+			"methods": {},
+			"version": 1
+		}
+	},
+	"settings": {
+		"compilationTarget": {
+			"IFBCoin.sol": "ContextUpgradeable"
+		},
+		"evmVersion": "prague",
+		"libraries": {},
+		"metadata": {
+			"bytecodeHash": "ipfs"
+		},
+		"optimizer": {
+			"enabled": false,
+			"runs": 200
+		},
+		"remappings": []
+	},
+	"sources": {
+		"IFBCoin.sol": {
+			"keccak256": "0xcbb4b56b6a0f8761798ef55114ef1fcc0b8e7ed6c91c0b89ad5c53adcd0d6f30",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://0266b967cd2640adee3c22e9b3265ad5fa9fc9f224f4bd6a79ca700bfcae1a66",
+				"dweb:/ipfs/QmdnbwwBZp7Jdb1gtYS6PnTVVxarLFRU6RdHiVWhvSDmUh"
+			]
+		}
+	},
+	"version": 1
+}
