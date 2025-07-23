@@ -6,22 +6,68 @@
 	"output": {
 		"abi": [
 			{
+				"inputs": [],
+				"stateMutability": "nonpayable",
+				"type": "constructor"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "owner",
+						"type": "address"
+					}
+				],
+				"name": "OwnableInvalidOwner",
+				"type": "error"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "account",
+						"type": "address"
+					}
+				],
+				"name": "OwnableUnauthorizedAccount",
+				"type": "error"
+			},
+			{
 				"anonymous": false,
 				"inputs": [
 					{
 						"indexed": false,
 						"internalType": "address",
-						"name": "addr",
+						"name": "deployedAt",
 						"type": "address"
 					},
 					{
 						"indexed": false,
-						"internalType": "uint256",
+						"internalType": "bytes32",
 						"name": "salt",
-						"type": "uint256"
+						"type": "bytes32"
 					}
 				],
-				"name": "Deployed",
+				"name": "ContractDeployed",
+				"type": "event"
+			},
+			{
+				"anonymous": false,
+				"inputs": [
+					{
+						"indexed": true,
+						"internalType": "address",
+						"name": "previousOwner",
+						"type": "address"
+					},
+					{
+						"indexed": true,
+						"internalType": "address",
+						"name": "newOwner",
+						"type": "address"
+					}
+				],
+				"name": "OwnershipTransferred",
 				"type": "event"
 			},
 			{
@@ -32,20 +78,20 @@
 						"type": "bytes"
 					},
 					{
-						"internalType": "uint256",
+						"internalType": "bytes32",
 						"name": "salt",
-						"type": "uint256"
+						"type": "bytes32"
 					}
 				],
-				"name": "deploy",
+				"name": "computeAddress",
 				"outputs": [
 					{
 						"internalType": "address",
-						"name": "addr",
+						"name": "",
 						"type": "address"
 					}
 				],
-				"stateMutability": "nonpayable",
+				"stateMutability": "view",
 				"type": "function"
 			},
 			{
@@ -56,12 +102,25 @@
 						"type": "bytes"
 					},
 					{
-						"internalType": "uint256",
+						"internalType": "bytes32",
 						"name": "salt",
-						"type": "uint256"
+						"type": "bytes32"
 					}
 				],
-				"name": "getAddress",
+				"name": "deploy",
+				"outputs": [
+					{
+						"internalType": "address",
+						"name": "",
+						"type": "address"
+					}
+				],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "owner",
 				"outputs": [
 					{
 						"internalType": "address",
@@ -71,29 +130,76 @@
 				],
 				"stateMutability": "view",
 				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "renounceOwnership",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "newOwner",
+						"type": "address"
+					}
+				],
+				"name": "transferOwnership",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
 			}
 		],
 		"devdoc": {
+			"errors": {
+				"OwnableInvalidOwner(address)": [
+					{
+						"details": "The owner is not a valid owner account. (eg. `address(0)`)"
+					}
+				],
+				"OwnableUnauthorizedAccount(address)": [
+					{
+						"details": "The caller account is not authorized to perform an operation."
+					}
+				]
+			},
 			"kind": "dev",
-			"methods": {},
+			"methods": {
+				"owner()": {
+					"details": "Returns the address of the current owner."
+				},
+				"renounceOwnership()": {
+					"details": "Leaves the contract without owner. It will not be possible to call `onlyOwner` functions. Can only be called by the current owner. NOTE: Renouncing ownership will leave the contract without an owner, thereby disabling any functionality that is only available to the owner."
+				},
+				"transferOwnership(address)": {
+					"details": "Transfers ownership of the contract to a new account (`newOwner`). Can only be called by the current owner."
+				}
+			},
+			"title": "Create2Factory",
 			"version": 1
 		},
 		"userdoc": {
 			"kind": "user",
 			"methods": {
-				"deploy(bytes,uint256)": {
-					"notice": "Faz o deploy do contrato usando bytecode e salt (uint256)"
+				"computeAddress(bytes,bytes32)": {
+					"notice": "Calcula o endereço que será gerado com CREATE2"
 				},
-				"getAddress(bytes,uint256)": {
-					"notice": "Retorna o endereço do contrato que será criado com o bytecode e salt fornecidos"
+				"constructor": {
+					"notice": "Construtor define o dono inicial"
+				},
+				"deploy(bytes,bytes32)": {
+					"notice": "Deploya contrato com CREATE2"
 				}
 			},
+			"notice": "Deploya contratos com endereço customizado usando CREATE2",
 			"version": 1
 		}
 	},
 	"settings": {
 		"compilationTarget": {
-			"Create2Factory.sol": "CREATE2Factory"
+			"Create2Factory-Proxy.sol": "Create2Factory"
 		},
 		"evmVersion": "prague",
 		"libraries": {},
@@ -107,12 +213,28 @@
 		"remappings": []
 	},
 	"sources": {
-		"Create2Factory.sol": {
-			"keccak256": "0x11c0c3006e1cb44d7b6a392e2387ab705b3e88d73b437592d2d6760cca4023a5",
+		"@openzeppelin/contracts/access/Ownable.sol": {
+			"keccak256": "0xff6d0bb2e285473e5311d9d3caacb525ae3538a80758c10649a4d61029b017bb",
 			"license": "MIT",
 			"urls": [
-				"bzz-raw://e4270e985fcf408c3d0134f6bb2296e8a2f8996ff3ee37d39af384564fc3b401",
-				"dweb:/ipfs/QmNQacW2jQn8yuGfp1uDA8yFKLniBL5pYPt4bKRYwNfwf9"
+				"bzz-raw://8ed324d3920bb545059d66ab97d43e43ee85fd3bd52e03e401f020afb0b120f6",
+				"dweb:/ipfs/QmfEckWLmZkDDcoWrkEvMWhms66xwTLff9DDhegYpvHo1a"
+			]
+		},
+		"@openzeppelin/contracts/utils/Context.sol": {
+			"keccak256": "0x493033a8d1b176a037b2cc6a04dad01a5c157722049bbecf632ca876224dd4b2",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://6a708e8a5bdb1011c2c381c9a5cfd8a9a956d7d0a9dc1bd8bcdaf52f76ef2f12",
+				"dweb:/ipfs/Qmax9WHBnVsZP46ZxEMNRQpLQnrdE4dK8LehML1Py8FowF"
+			]
+		},
+		"Create2Factory-Proxy.sol": {
+			"keccak256": "0xb826f9e6555c43d8961b10eed4c22bf1bec12d0be0a9ccdd4fe3ccc031bfff78",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://bfcc44429482c29fd6ef6de9b65e1bc5eaa1cc836189ab0924431ef8799f825e",
+				"dweb:/ipfs/QmTrLpqnqhD9AuPVsNpdzs6fWYdR59dBA5Qi9xb6PCVFLY"
 			]
 		}
 	},
