@@ -8,13 +8,24 @@
 			{
 				"inputs": [
 					{
+						"internalType": "uint256",
+						"name": "_initialSupply",
+						"type": "uint256"
+					}
+				],
+				"stateMutability": "nonpayable",
+				"type": "constructor"
+			},
+			{
+				"inputs": [
+					{
 						"internalType": "address",
-						"name": "owner",
+						"name": "",
 						"type": "address"
 					},
 					{
 						"internalType": "address",
-						"name": "spender",
+						"name": "",
 						"type": "address"
 					}
 				],
@@ -33,12 +44,12 @@
 				"inputs": [
 					{
 						"internalType": "address",
-						"name": "spender",
+						"name": "_spender",
 						"type": "address"
 					},
 					{
 						"internalType": "uint256",
-						"name": "amount",
+						"name": "_value",
 						"type": "uint256"
 					}
 				],
@@ -46,7 +57,7 @@
 				"outputs": [
 					{
 						"internalType": "bool",
-						"name": "",
+						"name": "success",
 						"type": "bool"
 					}
 				],
@@ -57,7 +68,7 @@
 				"inputs": [
 					{
 						"internalType": "address",
-						"name": "account",
+						"name": "",
 						"type": "address"
 					}
 				],
@@ -67,6 +78,45 @@
 						"internalType": "uint256",
 						"name": "",
 						"type": "uint256"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "decimals",
+				"outputs": [
+					{
+						"internalType": "uint8",
+						"name": "",
+						"type": "uint8"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "name",
+				"outputs": [
+					{
+						"internalType": "string",
+						"name": "",
+						"type": "string"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "symbol",
+				"outputs": [
+					{
+						"internalType": "string",
+						"name": "",
+						"type": "string"
 					}
 				],
 				"stateMutability": "view",
@@ -89,12 +139,12 @@
 				"inputs": [
 					{
 						"internalType": "address",
-						"name": "to",
+						"name": "_to",
 						"type": "address"
 					},
 					{
 						"internalType": "uint256",
-						"name": "amount",
+						"name": "_value",
 						"type": "uint256"
 					}
 				],
@@ -102,7 +152,7 @@
 				"outputs": [
 					{
 						"internalType": "bool",
-						"name": "",
+						"name": "success",
 						"type": "bool"
 					}
 				],
@@ -113,17 +163,17 @@
 				"inputs": [
 					{
 						"internalType": "address",
-						"name": "from",
+						"name": "_from",
 						"type": "address"
 					},
 					{
 						"internalType": "address",
-						"name": "to",
+						"name": "_to",
 						"type": "address"
 					},
 					{
 						"internalType": "uint256",
-						"name": "amount",
+						"name": "_value",
 						"type": "uint256"
 					}
 				],
@@ -131,7 +181,7 @@
 				"outputs": [
 					{
 						"internalType": "bool",
-						"name": "",
+						"name": "success",
 						"type": "bool"
 					}
 				],
@@ -147,13 +197,12 @@
 		"userdoc": {
 			"kind": "user",
 			"methods": {},
-			"notice": "🎯 CONTRATO OTIMIZADO PARA SISTEMA SCCAFE  ✅ Compatível com todas as verificações do sistema: - ERC-20 completo - Função buy() payable funcional - Funções de preço detectáveis - Sistema de diagnóstico compatível - Sem pausas ou bloqueios - Venda sempre ativa",
 			"version": 1
 		}
 	},
 	"settings": {
 		"compilationTarget": {
-			"SaleSimples.sol": "IERC20"
+			"SaleSimples.sol": "SimpleToken"
 		},
 		"evmVersion": "prague",
 		"libraries": {},
@@ -168,11 +217,11 @@
 	},
 	"sources": {
 		"SaleSimples.sol": {
-			"keccak256": "0xe6d37b1feb67b146bf1eeb191a567d9efd71d903427dfbedab5c3433e3cab6bd",
+			"keccak256": "0xf8eafaba052fb5eae7e0569eb748b213a25ac14b815018736bd25adc75d343ca",
 			"license": "MIT",
 			"urls": [
-				"bzz-raw://3215e9a3acd2ea5811a198be9eb66ec3665027c57eee571555d775d5965151bb",
-				"dweb:/ipfs/QmY6KP1ocjb9vfy1eAm3X1VcqNXZiwuBc1ucrqZ7Pfp4TB"
+				"bzz-raw://eb5be51ec4f61fc244efe27c7183d1ab7ebfb8b6c78b6b08c38d3f91b3d42841",
+				"dweb:/ipfs/QmbbyxopjWrSNHCCbhTTttZQH6FEpS57kKnHK4Qk8ozxBv"
 			]
 		}
 	},
