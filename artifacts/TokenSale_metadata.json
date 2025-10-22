@@ -8,13 +8,28 @@
 			{
 				"inputs": [
 					{
+						"internalType": "address",
+						"name": "_tokenAddress",
+						"type": "address"
+					},
+					{
+						"internalType": "address",
+						"name": "_commissionWallet",
+						"type": "address"
+					},
+					{
+						"internalType": "address",
+						"name": "_tokenOwnerWallet",
+						"type": "address"
+					},
+					{
 						"internalType": "uint256",
-						"name": "_initialSupply",
+						"name": "_tokenPrice",
 						"type": "uint256"
 					},
 					{
 						"internalType": "uint256",
-						"name": "_tokensPerBNB",
+						"name": "_commissionPercent",
 						"type": "uint256"
 					}
 				],
@@ -22,10 +37,67 @@
 				"type": "constructor"
 			},
 			{
-				"inputs": [],
+				"anonymous": false,
+				"inputs": [
+					{
+						"indexed": true,
+						"internalType": "address",
+						"name": "buyer",
+						"type": "address"
+					},
+					{
+						"indexed": false,
+						"internalType": "uint256",
+						"name": "amount",
+						"type": "uint256"
+					},
+					{
+						"indexed": false,
+						"internalType": "uint256",
+						"name": "totalCost",
+						"type": "uint256"
+					}
+				],
+				"name": "TokensPurchased",
+				"type": "event"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "tokenAmount",
+						"type": "uint256"
+					}
+				],
 				"name": "buyTokens",
 				"outputs": [],
 				"stateMutability": "payable",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "commissionPercent",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "commissionWallet",
+				"outputs": [
+					{
+						"internalType": "address",
+						"name": "",
+						"type": "address"
+					}
+				],
+				"stateMutability": "view",
 				"type": "function"
 			},
 			{
@@ -42,11 +114,76 @@
 				"type": "function"
 			},
 			{
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "_commissionPercent",
+						"type": "uint256"
+					}
+				],
+				"name": "setCommissionPercent",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "_wallet",
+						"type": "address"
+					}
+				],
+				"name": "setCommissionWallet",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "_tokenAddress",
+						"type": "address"
+					}
+				],
+				"name": "setTokenAddress",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "_wallet",
+						"type": "address"
+					}
+				],
+				"name": "setTokenOwnerWallet",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "_tokenPrice",
+						"type": "uint256"
+					}
+				],
+				"name": "setTokenPrice",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
 				"inputs": [],
 				"name": "token",
 				"outputs": [
 					{
-						"internalType": "contract SimpleToken",
+						"internalType": "contract IERC20",
 						"name": "",
 						"type": "address"
 					}
@@ -56,12 +193,12 @@
 			},
 			{
 				"inputs": [],
-				"name": "tokensPerBNB",
+				"name": "tokenOwnerWallet",
 				"outputs": [
 					{
-						"internalType": "uint256",
+						"internalType": "address",
 						"name": "",
-						"type": "uint256"
+						"type": "address"
 					}
 				],
 				"stateMutability": "view",
@@ -69,7 +206,7 @@
 			},
 			{
 				"inputs": [],
-				"name": "totalSold",
+				"name": "tokenPrice",
 				"outputs": [
 					{
 						"internalType": "uint256",
@@ -83,19 +220,6 @@
 			{
 				"inputs": [],
 				"name": "withdrawBNB",
-				"outputs": [],
-				"stateMutability": "nonpayable",
-				"type": "function"
-			},
-			{
-				"inputs": [
-					{
-						"internalType": "uint256",
-						"name": "amount",
-						"type": "uint256"
-					}
-				],
-				"name": "withdrawUnsoldTokens",
 				"outputs": [],
 				"stateMutability": "nonpayable",
 				"type": "function"
@@ -118,7 +242,7 @@
 	},
 	"settings": {
 		"compilationTarget": {
-			"SaleSimples.sol": "TokenSale"
+			"tokenSale.sol": "TokenSale"
 		},
 		"evmVersion": "prague",
 		"libraries": {},
@@ -132,12 +256,12 @@
 		"remappings": []
 	},
 	"sources": {
-		"SaleSimples.sol": {
-			"keccak256": "0xf8eafaba052fb5eae7e0569eb748b213a25ac14b815018736bd25adc75d343ca",
+		"tokenSale.sol": {
+			"keccak256": "0xa7a8540af1927a10532c8846bb9339432dd401e242cb909555c3349b75855d29",
 			"license": "MIT",
 			"urls": [
-				"bzz-raw://eb5be51ec4f61fc244efe27c7183d1ab7ebfb8b6c78b6b08c38d3f91b3d42841",
-				"dweb:/ipfs/QmbbyxopjWrSNHCCbhTTttZQH6FEpS57kKnHK4Qk8ozxBv"
+				"bzz-raw://39e19f74b5d9430ce4f736b99841f2ff03d328762d28650da43c5fe930342cf5",
+				"dweb:/ipfs/QmUrvL3NUmJRNCk8NhBVH2n6GgTi8BuUfCXUndwGhA5FQ3"
 			]
 		}
 	},
